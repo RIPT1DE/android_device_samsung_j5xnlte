@@ -1,18 +1,22 @@
 # Inherit from common
 include device/samsung/j5-common/BoardConfigCommon.mk
 
-LOCAL_PATH := device/samsung/j5lte
+LOCAL_PATH := device/samsung/j5xnlte
 
 # Asserts
-TARGET_OTA_ASSERT_DEVICE := j5lte,j5ltechn,j5ltedx,j5ltedo,j5ltekx,j5lteub,j5ltexx,j5ltezt,j5ylte
+TARGET_OTA_ASSERT_DEVICE := j5xnlte,j5xnltexx,j5x3g
 
 # Kernel
-TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_j5lte_eur_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_j5xlte_eur_defconfig
+
+# Audio
+AUDIO_FEATURE_SAMSUNG_DUAL_SIM := true
+
+# Radio
+SIM_COUNT := 2
+TARGET_GLOBAL_CFLAGS += -DANDROID_MULTI_SIM
+TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
 
 # Partition sizes
-BOARD_SYSTEMIMAGE_PARTITION_SIZE    := 2181038080
-BOARD_USERDATAIMAGE_PARTITION_SIZE  := 5016350720
-
-# RIL
-SIM_COUNT := 2
-BOARD_GLOBAL_CFLAGS += -DRIL_FIX_SMS_NOT_SENT_ERR
+BOARD_SYSTEMIMAGE_PARTITION_SIZE    := 3145728000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 12138278912
